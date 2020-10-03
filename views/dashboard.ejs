@@ -17,12 +17,12 @@ Do you want to <a href="users/edit_profile">edit your profile?</a><br />
       </tr>
     </thead>
     <tbody>
-        <% for(var i=0; i < user.ordered_items.length; i++) { %>
+        <% for(var i=0; i < products.length; i++) { %>
             <tr>
                 <td><%= i+1 %></td>
-                <td><%= user.ordered_items[i][0].price %></td>
-                <td><%= user.ordered_items[i][0].price %></td>
-                <td><%= user.ordered_items[i][1] %></td>
+                <td><%= products[i].name %></td>
+                <td>&#x20B9;<%= products[i].price %></td>
+                <td></td>
             </tr>
          <% } %>
     </tbody>

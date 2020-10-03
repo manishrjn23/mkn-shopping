@@ -1,8 +1,17 @@
 .nav-item{
     font-size: 150%;
     padding-top: 2%;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1px;
 }
 .dropdown-item{
     font-size: 130%;
+}
+h1,h2,h3{
+    font-family: 'Bebas Neue', cursive;
+}
+th{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 120%;
+    letter-spacing: 1px;
 }

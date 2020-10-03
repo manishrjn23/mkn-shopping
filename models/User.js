@@ -21,11 +21,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  phone:{
-    type:String,
-    default:""
+  phone: {
+    type: String,
+    default: "",
   },
-  wishList: [
+  wishlist: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
@@ -38,12 +38,10 @@ const UserSchema = new mongoose.Schema({
     },
   ],
   ordered_items: [
-    [{
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
-    },{
-      type: Date
-    }]
+    },
   ],
 });
 

@@ -1,0 +1,17 @@
+Adding stuff to cart
+
+const newItem = new Products({ name: "alalalalala", price: 2000 });
+  newItem.save();
+  user_id=req.user.id;
+  User.findByIdAndUpdate(user_id, { }, 
+                            function (err, docs) { 
+    if (err){ 
+        console.log(err) 
+    } 
+    else{ 
+      req.user.wislist.push(newItem);
+      req.user.save();
+      req.flash('success_message','Information Updated Successfully');
+      res.redirect('/dashboard');
+    } 
+    });

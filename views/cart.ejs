@@ -1,0 +1,49 @@
+<%- include('partials/navbar'); %>
+<div class="container">
+  <h1 class="mt-5">Shopping cart</h1>
+  <%- include('partials/messages'); %>
+  <p class="lead mt-3">Hi <%= user.name %>! Here is your shopping cart</p>
+
+
+  <table class="table" id='cartTable'>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th>.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% var c=0; %> 
+      <% for(var i=0; i < products.length; i++) { %>
+      <tr>
+        <td>Yay</td>
+        <td><%= products[i].name %></td>
+        <td><%= products[i].price %></td>
+        <td><button class="btn btn-danger" onclick="removeItem()">X</button></td>
+        <% c=c+products[i].price %>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <script>
+    function removeItem() {
+      document.getElementById("cartTable").deleteRow(i);
+      req.user.cart.splice(i,1);
+    }
+    </script>
+  <% if(products.length===0){ %>
+  <p>No items to show.</p>
+  <% } %>
+  <div class="d-flex flex-row-reverse">
+    <h3>Total price: &#x20B9;<%=c %></h3>
+    
+  </div>
+  <div class="d-flex flex-row-reverse">
+    <form action='/cart' method="POST">
+        <button type="submit" class="btn btn-success">Order Now!</button>
+      </form>
+  </div>
+ 
+</div>
