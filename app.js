@@ -13,13 +13,14 @@ app.use(bodyParser.json());
 
 //Setting up passport
 require('./config/passport')(passport);
+require('./config/google-auth')(passport);
 
 //Setting up database
 const db = require("./config/keys").MongoURI;
 
 //Connect database
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify:false })
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log(err));
 

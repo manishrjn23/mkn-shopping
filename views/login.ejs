@@ -1,4 +1,8 @@
 <div class="row justify-content-center mt-5">
+  <img src="/images/MKN Shopping.png" width="100px">
+</div>
+
+<div class="row justify-content-center mt-5">
     <h1>Login</h1>
 </div>
 <%- include('partials/messages'); %>
@@ -13,6 +17,9 @@
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
         </div>
+        <div>Don't have an account? <a href="/users/sign_up">Sign up</a>.</div>
+        
         <button type="submit" class="btn btn-primary">Login</button>
+        <div><a href="/users/auth/google">Log in through Google</a></div>
       </form>
 </div>

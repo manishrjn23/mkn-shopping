@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/dashboard"><img src='/images/MKN Shopping.png' width="120px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" width="100px">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item align-middle">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+        <li class="nav-item align-middle">
+          <a class="nav-link" href="#">Shop Now</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Your Cart <span class="badge badge-light"><%=user.cart.length%></span></a>
+        </li>
+        <li class="nav-item align-middle">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="/images/user_icon.png" width="40px">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Your Wishlist</a>
+            <a class="dropdown-item" href="/users/edit_profile">Edit Profile</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#logout" href=''>Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Alert!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <a href="users/logout"><button type="button" class="btn btn-danger">Yes, log me out.</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </nav>

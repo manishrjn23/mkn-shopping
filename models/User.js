@@ -17,9 +17,13 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  delivery_adress: {
+  delivery_address: {
     type: String,
     default: "",
+  },
+  phone:{
+    type:String,
+    default:""
   },
   wishList: [
     {
@@ -34,10 +38,12 @@ const UserSchema = new mongoose.Schema({
     },
   ],
   ordered_items: [
-    {
+    [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
-    },
+    },{
+      type: Date
+    }]
   ],
 });
 

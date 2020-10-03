@@ -71,16 +71,6 @@ router.post("/sign_up", (req, res) => {
   }
 });
 
-router.post('/edit_profile',ensureAuthenticated,(req,res)=>{
-  const { name, email, delivery_address } = req.body;
-  console.log(req.user.id);
-  console.log(`User ID ${req.user.id}`);
-  req.flash('success_message','Information Updated Successfully');
-  res.redirect('/dashboard');
-  
-  // 
-  // User.findByIdAndUpdate()
-});
 
 router.post("/login", function (req, res, next) {
   passport.authenticate("local", {
@@ -90,11 +80,37 @@ router.post("/login", function (req, res, next) {
   })(req, res, next);
 });
 
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/users/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    req.flash('success_message','Logged in Successfully')
+    res.redirect('/dashboard');
+  });
+
+
+router.post('/edit_profile',ensureAuthenticated,(req,res)=>{
+  const { name, delivery_address,phone } = req.body;
+  user_id=req.user.id;
+  User.findByIdAndUpdate(user_id, { name: name,delivery_address:delivery_address,phone:phone }, 
+                            function (err, docs) { 
+    if (err){ 
+        console.log(err) 
+    } 
+    else{ 
+      req.flash('success_message','Information Updated Successfully');
+      res.redirect('/dashboard');
+    } 
+}); 
+});
+
 router.get("/logout", function (req, res, next) {
   req.logout();
   req.flash("success_message", "Logged out successfully");
   res.redirect("/users/login");
 });
 
-router.put('/edit_profile')
 module.exports = router;
