@@ -4,7 +4,6 @@
   <%- include('partials/messages'); %>
   <p class="lead mt-3">Hi <%= user.name %>! Here is your wishlist</p>
 
-
   <table class="table">
     <thead>
       <tr>
@@ -31,12 +30,10 @@
   <% } %>
   <div class="d-flex flex-row-reverse">
     <h3>Total price: &#x20B9;<%=c %></h3>
-    
   </div>
   <div class="d-flex flex-row-reverse">
-    <form action='/wishlist' method="POST">
-        <button type="submit" class="btn btn-warning">Add all to cart!</button>
-      </form>
+    <form action="/wishlist" method="POST">
+      <button type="submit" class="btn btn-warning">Add all to cart!</button>
+    </form>
   </div>
- 
 </div>
