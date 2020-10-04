@@ -1,20 +1,39 @@
 <%- include('partials/navbar'); %>
 <div class="container">
+  <%if(products.length<1){ %>
+    <div class="mt-5 pt-5 d-flex justify-content-center"><h6>No items to display, try searching something else</h6></div>
+  
+<% } else{ %> 
 <h1 class="mt-5">All products</h1>
+<% } %> 
 <%- include('partials/messages'); %>
 
-<div class="card">
-    <div class="card-header">
-      Featured
+<% for(var i=0;i<products.length;i++){ %> 
+<div class="card mb-3 text-white bg-dark">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <% if(products.images!==undefined){ %> 
+      <img src="<%=products.images[0]%>" class="card-img" width="100%" height="100%">
+      <% }else{ %>
+        <img src="https://cdn.pixabay.com/photo/2014/10/26/15/26/board-503944_1280.jpg" class="card-img" width="100px">
+      <% } %> 
     </div>
-    <% for(var i=0;i<products.length;i++){ %> 
-    <div class="card-body">
-      <h5 class="card-title"><%=products[i].name%></h5>
-      <p class="card-text"><%-products[i].price%></p>
-      <a href="#" class="btn btn-secondary">See more</a>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=i+1%>. <%=products[i].name%></h5>
+        <p class="card-text"><%=products[i].description%></p>
+        <p class="card-text"><span class="text-info">&#x20B9;<%-products[i].price%></span></p>
+        
+        
+      </div>
     </div>
-<% } %> 
   </div>
+</div>
+<% } %> 
+
 
 </div>
-<%- include('partials/footer'); %>
+
+<% if(products.length>3){ %> 
+  <%- include('partials/footer'); %>
+<% }%>

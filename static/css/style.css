@@ -1,3 +1,6 @@
+html, body{
+    height:100%;
+}
 .nav-item{
     font-size: 150%;
     padding-top: 2%;
@@ -14,4 +17,7 @@ th{
     font-family: 'Bebas Neue', cursive;
     font-size: 120%;
     letter-spacing: 1px;
+}
+.card-body{
+    font-family: 'Raleway', sans-serif;
 }

@@ -15,3 +15,25 @@ const newItem = new Products({ name: "alalalalala", price: 2000 });
       res.redirect('/dashboard');
     } 
     });
+
+Product page router
+
+router.get("/shop_now", ensureAuthenticated, (req, res) => {
+  //Fuzzy Search
+  if (req.query.search) {
+    const regex = new RegExp(searchRegularExpression(req.query.search),'gi');
+    Products.find({'name':regex}, function (err, products) {
+      if (err) throw err;
+      else {
+        res.render("shop_now", { user: req.user, products: products });
+      }
+    });
+  } else {
+    Products.find({}, function (err, products) {
+      if (err) throw err;
+      else {
+        res.render("shop_now", { user: req.user, products: products });
+      }
+    });
+  }
+});

@@ -3,11 +3,17 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
       <form class="form-inline my-2 my-lg-0" action='/shop_now' method="GET">
-        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search MKN Shopping:" id="search" aria-label="Search" autocomplete="off">
+        
+        <input class="form-control mr-sm-2" placeholder="Sort Type" list="sort_data" name="sort_type" id="sort_type" autocomplete='off'>
+        <datalist id="sort_data">
+          <option value="Price: Low to High">
+          <option value="Price: High to Low">
+        </datalist>
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ml-auto">

@@ -45,16 +45,17 @@ router.post("/wishlist", ensureAuthenticated, (req, res) => {
 
 router.get("/shop_now", ensureAuthenticated, (req, res) => {
   //Fuzzy Search
+  var isDescending=(req.query.sort_type==='Price: High to Low')?{'price':-1}:{'price':1};
   if (req.query.search) {
     const regex = new RegExp(searchRegularExpression(req.query.search),'gi');
-    Products.find({'name':regex}, function (err, products) {
+    Products.find({'name':regex}).sort(isDescending).exec( function (err, products) {
       if (err) throw err;
       else {
         res.render("shop_now", { user: req.user, products: products });
       }
     });
   } else {
-    Products.find({}, function (err, products) {
+    Products.find({}).sort(isDescending).exec( function (err, products) {
       if (err) throw err;
       else {
         res.render("shop_now", { user: req.user, products: products });
