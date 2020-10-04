@@ -20,11 +20,15 @@ const ProductsSchema = new mongoose.Schema({
     type: String,
     default:"",
   }],
+  ratings:[{
+    type:Number,
+  }],
   counter:{
     type:Number,
     default:0,
   }
 });
+
 
 const Products = mongoose.model("Products", ProductsSchema);
 module.exports = Products;

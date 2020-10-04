@@ -2,7 +2,6 @@
 <div class="container">
   <%if(products.length<1){ %>
     <div class="mt-5 pt-5 d-flex justify-content-center"><h6>No items to display, try searching something else</h6></div>
-  
 <% } else{ %> 
 <h1 class="mt-5">All products</h1>
 <% } %> 
@@ -12,19 +11,48 @@
 <div class="card mb-3 text-white bg-dark">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <% if(products.images!==undefined){ %> 
-      <img src="<%=products.images[0]%>" class="card-img" width="100%" height="100%">
+      <% if(products[i].images[0]!==undefined){ %> 
+      <img src="<%=products[i].images[0]%>" class="card-img" width="100%" height="100%">
       <% }else{ %>
         <img src="https://cdn.pixabay.com/photo/2014/10/26/15/26/board-503944_1280.jpg" class="card-img" width="100px">
       <% } %> 
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><%=i+1%>. <%=products[i].name%></h5>
+        <h5 class="card-title"><%=i+1%>. <%=products[i].name%> <span class="badge badge-light"> <%=products[i].counter %> </span>
+        </h5>
         <p class="card-text"><%=products[i].description%></p>
-        <p class="card-text"><span class="text-info">&#x20B9;<%-products[i].price%></span></p>
         
+        <p class="card-text"><span>Average rating:</span></p>
+       
+        <p class="card-text"><span>&#x20B9;<%-products[i].price%></span></p>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
+          View reviews
+        </button>
+        <button class="btn btn-info">Add to wishlist</button>
+        <button class="btn btn-success">Add to cart</button>
+        <!-- Button trigger modal -->
         
+
+<!-- Modal -->
+      <div class="modal fade text-dark" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Reviews</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Very nice
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>

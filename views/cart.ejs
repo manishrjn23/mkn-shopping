@@ -15,24 +15,28 @@
       </tr>
     </thead>
     <tbody>
+    
       <% var c=0; %> 
       <% for(var i=0; i < products.length; i++) { %>
       <tr>
         <td></td>
         <td><%= products[i].name %></td>
         <td><%= products[i].price %></td>
-        <td><button class="btn btn-danger" onclick="removeItem()">X</button></td>
+        <td><form action="/cart/delete?deletedItem=<%=i%>" method="POST"><button class="btn btn-danger" type="submit" name='remove' onclick="removeItem(this)">X</button></form></td>
         <% c=c+products[i].price %>
       </tr>
       <% } %>
     </tbody>
   </table>
+
   <script>
-    function removeItem() {
+    
+    function removeItem(r) {
+      var i = r.parentNode.parentNode.rowIndex;
       document.getElementById("cartTable").deleteRow(i);
-      req.user.cart.splice(i,1);
+ 
     }
-    </script>
+  </script>
   <% if(products.length===0){ %>
   <p>No items to show.</p>
   <% } %>

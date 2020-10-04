@@ -21,3 +21,12 @@ th{
 .card-body{
     font-family: 'Raleway', sans-serif;
 }
+footer,tr{
+    font-family: 'Raleway', sans-serif!important;
+}
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+form{
+    font-family: 'Poppins', sans-serif;
+}
