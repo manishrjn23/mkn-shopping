@@ -64,7 +64,7 @@ router.post("/wishlist/delete", ensureAuthenticated, (req, res) => {
   req.user.wishlist.splice(i, 1);
   req.user.save();
   req.flash("success_message", "Removed item successfully");
-  res.redirect('/wishlist');
+  res.redirect("/wishlist");
 });
 router.post("/wishlist/addAllToCart", ensureAuthenticated, (req, res) => {
   for (var i = 0; i < req.user.wishlist.length; i++) {
@@ -131,7 +131,7 @@ function searchRegularExpression(searchQuery) {
 router.post("/cart", ensureAuthenticated, (req, res) => {
   if (req.user.cart.length === 0) {
     req.flash("error_message", "There are no items in the cart.");
-    res.redirect('back');
+    res.redirect("back");
   } else {
     req.user.ordered_items.push(...req.user.cart);
     req.user.cart = [];
