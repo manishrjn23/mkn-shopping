@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><%=i+1%>. <%=products[i].name%> <span class="badge badge-light"> <%=products[i].counter %> </span>
+        <h5 class="card-title"><%=i+1%>. <%=products[i].name%> <span class="badge badge-light"> <%=products[i].counter %> interested </span>
         </h5>
         <p class="card-text"><%=products[i].description%></p>
         
@@ -29,12 +29,9 @@
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
           View reviews
         </button>
-        <button class="btn btn-info">Add to wishlist</button>
-        <button class="btn btn-success">Add to cart</button>
-        <!-- Button trigger modal -->
+        <form class="form-inline" action='/shop_now/add_to_wishlist?itemID=<%-products[i].id%>' method="POST"><button class="btn btn-info">Add to wishlist</button></form>
+        <form class="form-inline" action='/shop_now/add_to_cart?itemID=<%-products[i].id%>' method="POST"><button class="btn btn-success">Add to cart</button></form>
         
-
-<!-- Modal -->
       <div class="modal fade text-dark" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

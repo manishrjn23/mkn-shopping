@@ -1,34 +1,31 @@
 <%- include('partials/navbar'); %>
 <div class="container">
-<h1 class="mt-5">User Dashboard</h1>
-<%- include('partials/messages'); %>
-<p class="lead mt-3">Welcome, <%= user.name %>!</p>
-Do you want to <a href="users/edit_profile">edit your profile?</a><br />
+  <h1 class="mt-5">User Dashboard</h1>
+  <%- include('partials/messages'); %>
+  <p class="lead mt-3">Welcome, <%= user.name %>!</p>
+  Do you want to <a href="users/edit_profile">edit your profile?</a><br />
 
-<h3 class="mt-5">Ordered Items</h3>
+  <h3 class="mt-5">Ordered Items</h3>
 
-<table class="table">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Product Name</th>
         <th scope="col">Price</th>
-        <th scope="col">Date of Order</th>
       </tr>
     </thead>
     <tbody>
-        <% for(var i=0; i < products.length; i++) { %>
-            <tr>
-                <td><%= i+1 %></td>
-                <td><%= products[i].name %></td>
-                <td>&#x20B9;<%= products[i].price %></td>
-                <td></td>
-            </tr>
-         <% } %>
+      <% for(var i=0; i < products.length; i++) { %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= products[i].name %></td>
+        <td>&#x20B9;<%= products[i].price %></td>
+      </tr>
+      <% } %>
     </tbody>
   </table>
   <% if(user.ordered_items.length===0){ %>
-    <p>No items to show.</p> 
-  <% } %> 
-
+  <p>No items to show.</p>
+  <% } %>
 </div>
