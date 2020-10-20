@@ -22,9 +22,9 @@
         <h5 class="card-title"><%=i+1%>. <%=products[i].name%> <span class="badge badge-light"> <%=products[i].counter %> interested </span>
         </h5>
         <p class="card-text"><%=products[i].description%></p>
-        
-        <p class="card-text"><span>Average rating:</span></p>
-       
+        <% if(products[i].ratings.length>1){ %> 
+        <p class="card-text"><span>Average rating: <%=products[i].ratings.reduce((total, num)=>total+num)/products[i].ratings.length%></span></p>
+        <% }%>
         <p class="card-text"><span>&#x20B9;<%-products[i].price%></span></p>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
           View reviews
@@ -42,7 +42,7 @@
               </button>
             </div>
             <div class="modal-body">
-              Very nice
+              <%=products[i].name%>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>

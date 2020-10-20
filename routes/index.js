@@ -61,9 +61,8 @@ router.post("/cart/delete", ensureAuthenticated, (req, res) => {
 });
 router.post("/wishlist/delete", ensureAuthenticated, (req, res) => {
   var i = req.query.deletedItem;
-  console.log(`index = ${i}`);
-  // req.user.wishlist.splice(i, 1);
-  // req.user.save();
+  req.user.wishlist.splice(i, 1);
+  req.user.save();
   req.flash("success_message", "Removed item successfully");
   res.redirect("/wishlist");
 });
@@ -88,7 +87,6 @@ router.get("/wishlist", ensureAuthenticated, (req, res) =>
   Products.find({ _id: { $in: req.user.wishlist } }, function (err, products) {
     if (err) throw err;
     else {
-      console.log(products);
       res.render("wishlist", { user: req.user, products: products });
     }
   })
