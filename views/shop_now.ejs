@@ -26,13 +26,13 @@
         <p class="card-text"><span>Average rating: <%=products[i].ratings.reduce((total, num)=>total+num)/products[i].ratings.length%></span></p>
         <% }%>
         <p class="card-text"><span>&#x20B9;<%-products[i].price%></span></p>
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#<%= i+1 %> ">
           View reviews
         </button>
         <form class="form-inline" action='/shop_now/add_to_wishlist?itemID=<%-products[i].id%>' method="POST"><button class="btn btn-info">Add to wishlist</button></form>
         <form class="form-inline" action='/shop_now/add_to_cart?itemID=<%-products[i].id%>' method="POST"><button class="btn btn-success">Add to cart</button></form>
         
-      <div class="modal fade text-dark" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal fade text-dark" id="<%= i+1 %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -42,7 +42,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <%=products[i].name%>
+              Nice product
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
